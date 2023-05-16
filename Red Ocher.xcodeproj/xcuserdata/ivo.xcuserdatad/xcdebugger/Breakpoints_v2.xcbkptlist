@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "49E4C7A8-3C42-4B88-B251-B92FE31026C6"
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "FD6594B6-0B09-4E3C-816D-23C0DA71EB3F"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Red Ocher/PreferencesWindow.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "112"
+            endingLineNumber = "112"
+            landmarkName = "DonationView"
+            landmarkType = "14">
+            <Locations>
+               <Location
+                  uuid = "FD6594B6-0B09-4E3C-816D-23C0DA71EB3F - c0b31b319c713efd"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Red_Ocher.DonationView.init() -&gt; Red_Ocher.DonationView"
+                  moduleName = "Red Ocher"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ivo/Red%20Ocher/Red%20Ocher/PreferencesWindow.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "112"
+                  endingLineNumber = "112"
+                  offsetFromSymbolStart = "64">
+               </Location>
+               <Location
+                  uuid = "FD6594B6-0B09-4E3C-816D-23C0DA71EB3F - e6d57f6874cfc0fa"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Red_Ocher.DonationView.init(selectedAmount: Swift.String, customAmount: Swift.String) -&gt; Red_Ocher.DonationView"
+                  moduleName = "Red Ocher"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ivo/Red%20Ocher/Red%20Ocher/PreferencesWindow.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "112"
+                  endingLineNumber = "112"
+                  offsetFromSymbolStart = "56">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>

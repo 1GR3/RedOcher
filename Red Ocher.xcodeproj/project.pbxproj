@@ -14,7 +14,6 @@
 		92303D912A135B4C00C3CA9C /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92303D902A135B4C00C3CA9C /* AboutView.swift */; };
 		92303D952A1393F300C3CA9C /* RedOcher-logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 92303D942A1393F300C3CA9C /* RedOcher-logo.png */; };
 		926F972A2A0E3D17007B9555 /* Red_OcherApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 926F97292A0E3D17007B9555 /* Red_OcherApp.swift */; };
-		926F972C2A0E3D17007B9555 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 926F972B2A0E3D17007B9555 /* ContentView.swift */; };
 		926F972E2A0E3D18007B9555 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 926F972D2A0E3D18007B9555 /* Assets.xcassets */; };
 		926F97312A0E3D18007B9555 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 926F97302A0E3D18007B9555 /* Preview Assets.xcassets */; };
 		926F97492A0E65D9007B9555 /* mac-32.png in Resources */ = {isa = PBXBuildFile; fileRef = 926F97422A0E65D9007B9555 /* mac-32.png */; };
@@ -35,7 +34,6 @@
 		92303D942A1393F300C3CA9C /* RedOcher-logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "RedOcher-logo.png"; path = "../../pCloud Drive/Red Ocher/RedOcher-logo.png"; sourceTree = "<group>"; };
 		926F97262A0E3D17007B9555 /* Red Ocher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Red Ocher.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		926F97292A0E3D17007B9555 /* Red_OcherApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Red_OcherApp.swift; sourceTree = "<group>"; };
-		926F972B2A0E3D17007B9555 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		926F972D2A0E3D18007B9555 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		926F97302A0E3D18007B9555 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		926F97322A0E3D18007B9555 /* Red_Ocher.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Red_Ocher.entitlements; sourceTree = "<group>"; };
@@ -81,7 +79,6 @@
 				926F97292A0E3D17007B9555 /* Red_OcherApp.swift */,
 				92303D8C2A0E8BCE00C3CA9C /* PreferencesWindow.swift */,
 				92303D902A135B4C00C3CA9C /* AboutView.swift */,
-				926F972B2A0E3D17007B9555 /* ContentView.swift */,
 				92303D942A1393F300C3CA9C /* RedOcher-logo.png */,
 				926F972D2A0E3D18007B9555 /* Assets.xcassets */,
 				926F97472A0E65D9007B9555 /* AppStore.png */,
@@ -191,7 +188,6 @@
 			files = (
 				92303D912A135B4C00C3CA9C /* AboutView.swift in Sources */,
 				92303D8D2A0E8BCE00C3CA9C /* PreferencesWindow.swift in Sources */,
-				926F972C2A0E3D17007B9555 /* ContentView.swift in Sources */,
 				926F972A2A0E3D17007B9555 /* Red_OcherApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

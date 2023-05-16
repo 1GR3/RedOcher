@@ -9,9 +9,12 @@ import Cocoa
 
 class AboutWindow: NSWindow {
     
+    static var shared: AboutWindow?
+    
     init() {
         let contentRect = NSRect(x: 0, y: 0, width: 400, height: 300)
         super.init(contentRect: contentRect, styleMask: [.titled, .closable], backing: .buffered, defer: false)
+        AboutWindow.shared = self
         
         self.title = "About"
         self.center()
@@ -32,6 +35,12 @@ class AboutWindow: NSWindow {
         appLogoImageView.image = NSImage(named: "RedOcher-logo.png")
         appLogoImageView.alignment = .center
         self.contentView?.addSubview(appLogoImageView)
+        
+        // Add the explanation label
+        let explanationLabel = NSTextField(labelWithString: "Simple way to get a precise and robust OCR out of screenshot")
+        explanationLabel.frame = NSRect(x: 0, y: 60, width: contentRect.width, height: 20)
+        explanationLabel.alignment = .center
+        self.contentView?.addSubview(explanationLabel)
         
         // Add the version label
         let versionLabel = NSTextField(labelWithString: "Version 1.0")
@@ -55,6 +64,8 @@ class AboutWindow: NSWindow {
 //        copyrightLabel.frame = NSRect(x: 0, y: 20, width: contentRect.width, height: 20)
 //        copyrightLabel.alignment = .center
 //        self.contentView?.addSubview(copyrightLabel)
+        
+        self.delegate = self
     }
     
     @objc private func websiteLinkButtonClicked(_ sender: Any) {
@@ -69,5 +80,15 @@ class AboutWindow: NSWindow {
     
     override var canBecomeMain: Bool {
         return true
+    }
+    
+    
+    
+}
+
+extension AboutWindow: NSWindowDelegate {
+    func windowWillClose(_ notification: Notification) {
+        // Release the shared reference to the AboutWindow instance
+        AboutWindow.shared = nil
     }
 }

@@ -21,9 +21,9 @@ struct Red_OcherApp: App {
                 .frame(width: .zero)
         }
       
-        WindowGroup {
-            ContentView()
-        }
+//        WindowGroup {
+//            ContentView()
+//        }
         .handlesExternalEvents(matching: ["myScene"])
     }
 }
@@ -38,6 +38,7 @@ import Cocoa
 final class AppDelegate: NSObject, NSApplicationDelegate {
     
     private var menuExtrasConfigurator: MacExtrasConfigurator?
+    
     
     final private class MacExtrasConfigurator: NSObject {
         

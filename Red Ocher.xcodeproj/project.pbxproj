@@ -11,6 +11,8 @@
 		92303D8B2A0E85D000C3CA9C /* menuBarIcon-W@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 92303D8A2A0E85D000C3CA9C /* menuBarIcon-W@2x.png */; };
 		92303D8D2A0E8BCE00C3CA9C /* PreferencesWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92303D8C2A0E8BCE00C3CA9C /* PreferencesWindow.swift */; };
 		92303D8F2A0E8D8E00C3CA9C /* Red Ocher in Resources */ = {isa = PBXBuildFile; fileRef = 92303D8E2A0E8D8E00C3CA9C /* Red Ocher */; };
+		92303D912A135B4C00C3CA9C /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92303D902A135B4C00C3CA9C /* AboutView.swift */; };
+		92303D952A1393F300C3CA9C /* RedOcher-logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 92303D942A1393F300C3CA9C /* RedOcher-logo.png */; };
 		926F972A2A0E3D17007B9555 /* Red_OcherApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 926F97292A0E3D17007B9555 /* Red_OcherApp.swift */; };
 		926F972C2A0E3D17007B9555 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 926F972B2A0E3D17007B9555 /* ContentView.swift */; };
 		926F972E2A0E3D18007B9555 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 926F972D2A0E3D18007B9555 /* Assets.xcassets */; };
@@ -29,6 +31,8 @@
 		92303D8A2A0E85D000C3CA9C /* menuBarIcon-W@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menuBarIcon-W@2x.png"; sourceTree = "<group>"; };
 		92303D8C2A0E8BCE00C3CA9C /* PreferencesWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesWindow.swift; sourceTree = "<group>"; };
 		92303D8E2A0E8D8E00C3CA9C /* Red Ocher */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "Red Ocher"; sourceTree = "<group>"; };
+		92303D902A135B4C00C3CA9C /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
+		92303D942A1393F300C3CA9C /* RedOcher-logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "RedOcher-logo.png"; path = "../../pCloud Drive/Red Ocher/RedOcher-logo.png"; sourceTree = "<group>"; };
 		926F97262A0E3D17007B9555 /* Red Ocher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Red Ocher.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		926F97292A0E3D17007B9555 /* Red_OcherApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Red_OcherApp.swift; sourceTree = "<group>"; };
 		926F972B2A0E3D17007B9555 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -76,7 +80,9 @@
 			children = (
 				926F97292A0E3D17007B9555 /* Red_OcherApp.swift */,
 				92303D8C2A0E8BCE00C3CA9C /* PreferencesWindow.swift */,
+				92303D902A135B4C00C3CA9C /* AboutView.swift */,
 				926F972B2A0E3D17007B9555 /* ContentView.swift */,
+				92303D942A1393F300C3CA9C /* RedOcher-logo.png */,
 				926F972D2A0E3D18007B9555 /* Assets.xcassets */,
 				926F97472A0E65D9007B9555 /* AppStore.png */,
 				926F97462A0E65D9007B9555 /* AppStore@2x.png */,
@@ -162,6 +168,7 @@
 			files = (
 				926F974A2A0E65D9007B9555 /* mac-16.png in Resources */,
 				926F97312A0E3D18007B9555 /* Preview Assets.xcassets in Resources */,
+				92303D952A1393F300C3CA9C /* RedOcher-logo.png in Resources */,
 				926F974B2A0E65D9007B9555 /* mac-256.png in Resources */,
 				926F974E2A0E65D9007B9555 /* AppStore.png in Resources */,
 				926F972E2A0E3D18007B9555 /* Assets.xcassets in Resources */,
@@ -182,6 +189,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				92303D912A135B4C00C3CA9C /* AboutView.swift in Sources */,
 				92303D8D2A0E8BCE00C3CA9C /* PreferencesWindow.swift in Sources */,
 				926F972C2A0E3D17007B9555 /* ContentView.swift in Sources */,
 				926F972A2A0E3D17007B9555 /* Red_OcherApp.swift in Sources */,
@@ -324,7 +332,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.deltoid.Red-Ocher";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -353,7 +361,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.deltoid.Red-Ocher";
 				PRODUCT_NAME = "$(TARGET_NAME)";

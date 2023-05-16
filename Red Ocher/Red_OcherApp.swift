@@ -94,7 +94,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
                 let aboutItem = NSMenuItem()
                 aboutItem.title = "About"
                 aboutItem.target = self
-                aboutItem.action = #selector(openAboutURL)
+                aboutItem.action = #selector(openAbout)
                 aboutItem.keyEquivalent = "a"
                 
                 let preferencesItem = NSMenuItem()
@@ -106,7 +106,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
                 let donateItem = NSMenuItem()
                 donateItem.title = "Donate"
                 donateItem.target = self
-                donateItem.action = #selector(openDonateTab)
+                donateItem.action = #selector(openDonate)
                 donateItem.keyEquivalent = "d"
                 
                 let quitItem = NSMenuItem()
@@ -130,23 +130,23 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         }
         
         private func showPreferencesWindow(selectedTab: Int = 0) {
-                    if preferencesWindow == nil {
-                        let preferencesView = PreferencesWindow()
-                        let preferencesHostingView = NSHostingView(rootView: preferencesView)
-                        let preferencesFrame = NSRect(x: 0, y: 0, width: 400, height: 300)
-                        let styleMask: NSWindow.StyleMask = [.titled, .closable, .miniaturizable, .resizable]
+            if preferencesWindow == nil {
+                let preferencesView = PreferencesWindow()
+                let preferencesHostingView = NSHostingView(rootView: preferencesView)
+                let preferencesFrame = NSRect(x: 0, y: 0, width: 400, height: 300)
+                let styleMask: NSWindow.StyleMask = [.titled, .closable, .miniaturizable, .resizable]
 
-                        preferencesWindow = NSWindow(contentRect: preferencesFrame, styleMask: styleMask, backing: .buffered, defer: false)
-                        preferencesWindow?.title = "Preferences"
-                        preferencesWindow?.contentView = preferencesHostingView
-                    }
+                preferencesWindow = NSWindow(contentRect: preferencesFrame, styleMask: styleMask, backing: .buffered, defer: false)
+                preferencesWindow?.title = "Preferences"
+                preferencesWindow?.contentView = preferencesHostingView
+            }
 
-                    if let tabView = preferencesWindow?.contentView?.subviews.first as? NSTabView {
-                        tabView.selectTabViewItem(at: selectedTab)
-                    }
+            if let tabView = preferencesWindow?.contentView?.subviews.first as? NSTabView {
+                tabView.selectTabViewItem(at: selectedTab)
+            }
 
-                    preferencesWindow?.makeKeyAndOrderFront(nil)
-                }
+            preferencesWindow?.makeKeyAndOrderFront(nil)
+        }
         
         // MARK: - Actions
         
@@ -157,20 +157,23 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         @objc private func captureScreen() {
             // activate the functionality from the tessarect app
         }
-        @objc private func openAboutURL() {
-            let url = URL(string: "https://ivo.gregurec.info")!
-            if NSWorkspace.shared.open(url) {
-                print("default browser was successfully opened")
+        //private var aboutWindow: NSWindow?
 
+        @objc func openAbout() {
+            let aboutWindow = AboutWindow()
+                aboutWindow.makeKeyAndOrderFront(nil)
             }
-        }
         
         @objc private func preferencesAction(_ sender: Any?) {
             showPreferencesWindow(selectedTab: 0)
         }
                 
-        @objc private func openDonateTab(_ sender: Any?) {
-            showPreferencesWindow(selectedTab: 2)
+        @objc private func openDonate(_ sender: Any?) {
+            let url = URL(string: "https://ivo.gregurec.info")!
+            if NSWorkspace.shared.open(url) {
+                print("default browser was successfully opened")
+
+            }
         }
         
         @objc private func quitApplication(_ sender: Any?) {

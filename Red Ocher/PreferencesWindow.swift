@@ -22,10 +22,6 @@ struct PreferencesWindow: View {
                         Label("Language", systemImage: "globe")
                     }
                 
-            DonationView()
-                    .tabItem {
-                        Label("Donate", systemImage: "gift")
-                    }
                 }
                 .frame(width: 500, height: 300)
                 .padding(20)
@@ -104,82 +100,6 @@ struct LanguageSettingsView: View {
     var body: some View {
         Text("Appearance Settings")
             .font(.title)
-    }
-}
- 
-//--------------- donate settings ---------------//
- 
-struct DonationView: View {
-    let amounts = ["$1", "$5", "$10"]
-    
-    @State var selectedAmount: String = ""
-    @State var customAmount: String = ""
-    
-    var body: some View {
-        VStack(alignment: .leading, spacing: 16) {
-            Text("You've been using Red Ocher XX times. If you like it, consider donating for maintainance and further development.")
-                .font(.headline)
-            
-            HStack(spacing: 10) {
-                ForEach(amounts, id: \.self) { amount in
-                    Button(action: {
-                        selectedAmount = amount
-                    }) {
-                        HStack {
-                            Text(amount)
-                                .foregroundColor(selectedAmount == amount ? .white : .primary)
-                                .font(.headline)
-                            
-                            Spacer()
-                            
-                            Image(systemName: "checkmark.circle.fill")
-                                .foregroundColor(selectedAmount == amount ? .white : .clear)
-                        }
-                        .padding()
-                        .background(selectedAmount == amount ? Color.accentColor : Color.gray.opacity(0.2))
-                        .cornerRadius(8)
-                    }
-                    .buttonStyle(BorderlessButtonStyle())
-                }
-            }
-
-            
-            HStack {
-                Button(action: {
-                    selectedAmount = ""
-                }) {
-                    HStack {
-                        Image(systemName: "circle")
-                            .foregroundColor(selectedAmount.isEmpty ? .accentColor : .clear)
-                        
-                        Text("Custom")
-                            .foregroundColor(.primary)
-                            .font(.headline)
-                    }
-                    .padding()
-                    .background(selectedAmount.isEmpty ? Color.accentColor.opacity(0.1) : Color.gray.opacity(0.1))
-                    .cornerRadius(8)
-                }
-                .buttonStyle(BorderlessButtonStyle())
-                
-                TextField("Enter custom amount", text: $customAmount)
-                    .textFieldStyle(RoundedBorderTextFieldStyle())
-                    .frame(width: 100)
-                    .disabled(selectedAmount != "")
-            }
-            
-            Button(action: {
-                //TODO: Integrate with PayPal
-            }) {
-                Text("Donate")
-                    .foregroundColor(.white)
-                    .padding()
-                    .background(Color.accentColor)
-                    .cornerRadius(8)
-            }
-            .disabled(selectedAmount.isEmpty && customAmount.isEmpty)
-        }
-        .padding(16)
     }
 }
 

@@ -38,6 +38,9 @@ import Cocoa
 final class AppDelegate: NSObject, NSApplicationDelegate {
     
     private var menuExtrasConfigurator: MacExtrasConfigurator?
+    private var eventMonitor: Any?
+    
+    static var shared: AppDelegate!
     
     
     final private class MacExtrasConfigurator: NSObject {
@@ -89,7 +92,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
                 let captureItem = NSMenuItem()
                 captureItem.title = "Capture!"
                 captureItem.target = self
-                captureItem.action = #selector(captureScreen)
+                captureItem.action = #selector(captureFromMenu)
                 captureItem.keyEquivalent = "Ø"
                 
                 let aboutItem = NSMenuItem()
@@ -155,15 +158,17 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
             openURL(URL(string: "myApp://myScene")!)
         }
         
-        @objc private func captureScreen() {
+        @objc private func captureFromMenu() {
             // activate the functionality from the tessarect app
+            print("captured from menu")
+            CaptureHelper.captureScreen()
         }
         //private var aboutWindow: NSWindow?
 
         @objc func openAbout() {
             let aboutWindow = AboutWindow()
                 aboutWindow.makeKeyAndOrderFront(nil)
-            }
+        }
         
         @objc private func preferencesAction(_ sender: Any?) {
             showPreferencesWindow(selectedTab: 0)
@@ -186,5 +191,78 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
     
     func applicationDidFinishLaunching(_ notification: Notification) {
         menuExtrasConfigurator = .init()
+        registerGlobalShortcut()
+    }
+    
+    
+    
+    // -------------- global shortcut listener --------------- //
+    
+    
+    func applicationWillTerminate(_ notification: Notification) {
+        unregisterGlobalShortcut()
+    }
+    
+    private func registerGlobalShortcut() {
+        print("registerGlobalShortcut")
+        let keyMask: NSEvent.ModifierFlags = [.command, .control, .option]
+        let keyCode: UInt16 = 7 // Example keycode for "X" key
+        
+        eventMonitor = NSEvent.addGlobalMonitorForEvents(matching: .keyDown) { (event) in
+            if event.modifierFlags.contains(keyMask) && (event.keyCode == keyCode) {
+                self.captureShortcutHandler()
+            }
+        }
+    }
+    
+    private func unregisterGlobalShortcut() {
+        if let eventMonitor = eventMonitor {
+            NSEvent.removeMonitor(eventMonitor)
+            self.eventMonitor = nil
+        }
+    }
+    
+
+    
+    @objc private func captureShortcutHandler() {
+        // Handle the global shortcut event here
+        // Perform any action or trigger any functionality when the shortcut is pressed
+        print("captured with shortcut")
+        // Display a notification
+        CaptureHelper.captureScreen()
+    }
+    
+    
+}
+
+final class CaptureHelper {
+    
+    struct CaptureWindow: View {
+        var body: some View {
+            VStack {
+                Text("Capture Window")
+                    .font(.title)
+                    .padding()
+                Button("Close") {
+                    NSApp.keyWindow?.close()
+                }
+                .padding()
+            }
+        }
+    }
+    
+    static func captureScreen() {
+        print("ŠKLJOC!")
+        // Add your capture screen functionality here
+        
+        let captureWindow = NSWindow(
+            contentRect: NSRect(x: 0, y: 0, width: 300, height: 200),
+            styleMask: [.titled, .closable],
+            backing: .buffered,
+            defer: false
+        )
+        captureWindow.center()
+        captureWindow.contentView = NSHostingView(rootView: CaptureWindow())
+        captureWindow.makeKeyAndOrderFront(nil)
     }
 }

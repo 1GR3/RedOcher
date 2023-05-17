@@ -171,6 +171,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
                 preferencesWindow?.contentView = preferencesHostingView
             }
 
+            preferencesWindow?.center()
             preferencesWindow?.makeKeyAndOrderFront(nil)
         }
                 
@@ -265,4 +266,6 @@ final class CaptureHelper {
         captureWindow.contentView = NSHostingView(rootView: CaptureWindow())
         captureWindow.makeKeyAndOrderFront(nil)
     }
+    
+    
 }

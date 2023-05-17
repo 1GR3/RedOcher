@@ -35,18 +35,61 @@ struct ShortcutSettingsView: View {
     
     @State var selectedOption = "Shift-Control-Command-0"
     @State var customOption = ""
+    @State var isShiftEnabled = false
+    @State var isControlEnabled = false
+    @State var isOptionEnabled = false
+    @State var isCommandEnabled = false
     
     var body: some View {
-        VStack(alignment: .leading, spacing: 16) {
-            Text("Select an option:")
-                .font(.headline)
-            RadioButtonsView(options: options, selectedOption: $selectedOption)
-            if selectedOption == "Custom" {
-                TextField("Custom option", text: $customOption)
-                    .textFieldStyle(RoundedBorderTextFieldStyle())
+        VStack(alignment: .leading, spacing: 0) {
+            Text("To be able to use the global shortcut, make sure that Red Ocher is enabled in:")
+                
+            
+            Text("System Preferences > Security & Privacy > Privacy > Accessibility")
+                .padding(.bottom, 8)
+        
+            VStack(alignment: .leading, spacing: 16) {
+                Text("Select an option:")
+                    .font(.headline)
+                RadioButtonsView(options: options, selectedOption: $selectedOption)
+                
+                HStack(spacing: 8) {
+                    CheckBoxButton(title: "Shift", isSelected: $isShiftEnabled, isEnabled: selectedOption == "Custom")
+                    CheckBoxButton(title: "Control", isSelected: $isControlEnabled, isEnabled: selectedOption == "Custom")
+                    CheckBoxButton(title: "Option", isSelected: $isOptionEnabled, isEnabled: selectedOption == "Custom")
+                    CheckBoxButton(title: "Command", isSelected: $isCommandEnabled, isEnabled: selectedOption == "Custom")
+                    TextField("_", text: $customOption)
+                        .textFieldStyle(RoundedBorderTextFieldStyle())
+                        .frame(width: 30)
+                        .disabled(selectedOption != "Custom")
+                }
+                .padding(.leading, 20)
             }
         }
-        .padding(16)
+        .padding(8)
+    }
+}
+
+
+struct CheckBoxButton: View {
+    let title: String
+    @Binding var isSelected: Bool
+    var isEnabled: Bool
+    
+    var body: some View {
+        Button(action: { isSelected.toggle() }) {
+            HStack {
+                Image(systemName: isSelected ? "checkmark.square.fill" : "square")
+                    .foregroundColor(isEnabled ? (isSelected ? .accentColor : .gray) : .gray) // checkbox color
+                    .background(Rectangle().fill(Color.white).frame(width: 10, height: 10) )
+                    
+                    
+                Text(title)
+                    .foregroundColor(isEnabled ? .primary : .gray) // Change color based on selection and enabled state
+            }
+        }
+        .buttonStyle(PlainButtonStyle())
+        .disabled(!isEnabled) // Disable the button when not enabled
     }
 }
 
@@ -102,7 +145,6 @@ struct LanguageSettingsView: View {
             .font(.title)
     }
 }
-
 
 struct PreferencesWindow_Previews: PreviewProvider {
     static var previews: some View {

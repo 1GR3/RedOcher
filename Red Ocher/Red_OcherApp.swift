@@ -42,6 +42,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
     
     static var shared: AppDelegate!
     
+    let ocr = SLTesseract()
     
     final private class MacExtrasConfigurator: NSObject {
         
@@ -253,18 +254,21 @@ final class CaptureHelper {
     }
     
     static func captureScreen() {
-        print("ŠKLJOC!")
+        
         // Add your capture screen functionality here
         
-        let captureWindow = NSWindow(
-            contentRect: NSRect(x: 0, y: 0, width: 300, height: 200),
-            styleMask: [.titled, .closable],
-            backing: .buffered,
-            defer: false
-        )
-        captureWindow.center()
-        captureWindow.contentView = NSHostingView(rootView: CaptureWindow())
-        captureWindow.makeKeyAndOrderFront(nil)
+//        let ocr2text = ocr.recognize(image)
+//        print(ocr2text)
+        
+//        let captureWindow = NSWindow(
+//            contentRect: NSRect(x: 0, y: 0, width: 300, height: 200),
+//            styleMask: [.titled, .closable],
+//            backing: .buffered,
+//            defer: false
+//        )
+//        captureWindow.center()
+//        captureWindow.contentView = NSHostingView(rootView: CaptureWindow())
+//        captureWindow.makeKeyAndOrderFront(nil)
     }
     
     

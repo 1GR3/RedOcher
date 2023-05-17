@@ -50,6 +50,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         private var mainView: NSView
         
         
+        
         private struct MenuView: View {
             var body: some View {
                 HStack {
@@ -106,7 +107,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
                 let preferencesItem = NSMenuItem()
                 preferencesItem.title = "Preferences"
                 preferencesItem.target = self
-                preferencesItem.action = #selector(Self.preferencesAction(_:))
+                preferencesItem.action = #selector(Self.openPreferences(_:))
                 preferencesItem.keyEquivalent = ","
                 
                 let donateItem = NSMenuItem()
@@ -149,12 +150,16 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         }
         //private var aboutWindow: NSWindow?
 
-        @objc func openAbout(_ sender: Any?) {
-            let aboutWindow = AboutWindow()
-                aboutWindow.makeKeyAndOrderFront(nil)
+        @objc private func openAbout(_ sender: Any?) {
+            if aboutWindow == nil {
+                aboutWindow = AboutWindow()
+                aboutWindow?.makeKeyAndOrderFront(nil)
+            } else {
+                aboutWindow?.orderFront(nil)
+            }
         }
         
-        @objc private func preferencesAction(_ sender: Any?) {
+        @objc private func openPreferences(_ sender: Any?) {
             if preferencesWindow == nil {
                 let preferencesView = PreferencesWindow()
                 let preferencesHostingView = NSHostingView(rootView: preferencesView)

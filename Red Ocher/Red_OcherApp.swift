@@ -12,7 +12,7 @@ import AppKit
 struct Red_OcherApp: App {
     
     @NSApplicationDelegateAdaptor(AppDelegate.self)
-    private var appDelegate
+    var appDelegate: AppDelegate
 
     var body: some Scene {
       
@@ -49,6 +49,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         private var statusItem: NSStatusItem
         private var mainView: NSView
         
+        
         private struct MenuView: View {
             var body: some View {
                 HStack {
@@ -63,6 +64,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         @Environment(\.openURL) private var openURL
         
         private var preferencesWindow: NSWindow?
+        private var aboutWindow: NSWindow?
         
         
             
@@ -98,7 +100,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
                 let aboutItem = NSMenuItem()
                 aboutItem.title = "About"
                 aboutItem.target = self
-                aboutItem.action = #selector(openAbout)
+                aboutItem.action = #selector(openAbout(_:))
                 aboutItem.keyEquivalent = "a"
                 
                 let preferencesItem = NSMenuItem()
@@ -133,24 +135,6 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
             }
         }
         
-        private func showPreferencesWindow(selectedTab: Int = 0) {
-            if preferencesWindow == nil {
-                let preferencesView = PreferencesWindow()
-                let preferencesHostingView = NSHostingView(rootView: preferencesView)
-                let preferencesFrame = NSRect(x: 0, y: 0, width: 400, height: 300)
-                let styleMask: NSWindow.StyleMask = [.titled, .closable, .miniaturizable, .resizable]
-
-                preferencesWindow = NSWindow(contentRect: preferencesFrame, styleMask: styleMask, backing: .buffered, defer: false)
-                preferencesWindow?.title = "Preferences"
-                preferencesWindow?.contentView = preferencesHostingView
-            }
-
-            if let tabView = preferencesWindow?.contentView?.subviews.first as? NSTabView {
-                tabView.selectTabViewItem(at: selectedTab)
-            }
-
-            preferencesWindow?.makeKeyAndOrderFront(nil)
-        }
         
         // MARK: - Actions
         
@@ -165,13 +149,24 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         }
         //private var aboutWindow: NSWindow?
 
-        @objc func openAbout() {
+        @objc func openAbout(_ sender: Any?) {
             let aboutWindow = AboutWindow()
                 aboutWindow.makeKeyAndOrderFront(nil)
         }
         
         @objc private func preferencesAction(_ sender: Any?) {
-            showPreferencesWindow(selectedTab: 0)
+            if preferencesWindow == nil {
+                let preferencesView = PreferencesWindow()
+                let preferencesHostingView = NSHostingView(rootView: preferencesView)
+                let preferencesFrame = NSRect(x: 500, y: 500, width: 400, height: 300)
+                let styleMask: NSWindow.StyleMask = [.titled, .closable, .miniaturizable, .resizable]
+
+                preferencesWindow = NSWindow(contentRect: preferencesFrame, styleMask: styleMask, backing: .buffered, defer: false)
+                preferencesWindow?.title = "Preferences"
+                preferencesWindow?.contentView = preferencesHostingView
+            }
+
+            preferencesWindow?.makeKeyAndOrderFront(nil)
         }
                 
         @objc private func openDonate(_ sender: Any?) {

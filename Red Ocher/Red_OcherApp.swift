@@ -146,7 +146,13 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         @objc private func captureFromMenu() {
             // activate the functionality from the tessarect app
             print("captured from menu")
-            CaptureHelper.captureScreen()
+            //CaptureHelper.captureScreen()
+            //var image = NSImage()
+            let captureHelper = CaptureHelper()
+            if CaptureHelper.captureScreen() {
+                _ = captureHelper.getImageFromPasteboard()
+                // TODO: do something with the image
+            }
         }
         //private var aboutWindow: NSWindow?
 
@@ -237,35 +243,23 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
 }
 
 final class CaptureHelper {
-    
-    struct CaptureWindow: View {
-        var body: some View {
-            VStack {
-                Text("Capture Window")
-                    .font(.title)
-                    .padding()
-                Button("Close") {
-                    NSApp.keyWindow?.close()
-                }
-                .padding()
-            }
-        }
+    static func captureScreen() -> Bool {
+        let task = Process ()
+        task.launchPath = "/usr/sbin/screencapture"
+        task.arguments = ["-ci"]
+        task.launch()
+        task.waitUntilExit()
+        let status = task.terminationStatus
+        return status == 0
     }
-    
-    static func captureScreen() {
-        print("ŠKLJOC!")
-        // Add your capture screen functionality here
-        
-        let captureWindow = NSWindow(
-            contentRect: NSRect(x: 0, y: 0, width: 300, height: 200),
-            styleMask: [.titled, .closable],
-            backing: .buffered,
-            defer: false
-        )
-        captureWindow.center()
-        captureWindow.contentView = NSHostingView(rootView: CaptureWindow())
-        captureWindow.makeKeyAndOrderFront(nil)
+    func getImageFromPasteboard() -> NSImage {
+        let pasteboard = NSPasteboard.general
+        guard pasteboard.canReadItem(withDataConformingToTypes:
+            NSImage.imageTypes) else { return NSImage() }
+        guard let image = NSImage(pasteboard: pasteboard) else { return
+            NSImage() }
+        return image
     }
-    
-    
+    let ocr = SLTesseract()
+    //let text = ocr.recognize(image)
 }

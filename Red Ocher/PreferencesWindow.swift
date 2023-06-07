@@ -40,35 +40,58 @@ struct ShortcutSettingsView: View {
     @State var isOptionEnabled = false
     @State var isCommandEnabled = false
     
+    @State private var combinedCaptureKey = "0" // Default value
+    
+
+    
     var body: some View {
-        VStack(alignment: .leading, spacing: 0) {
-            Text("To be able to use the global shortcut, make sure that Red Ocher is enabled in:")
-                
+        VStack(alignment: .leading, spacing: 16) {
+            Text("Select an option:")
+                .font(.headline)
+            RadioButtonsView(options: options, selectedOption: $selectedOption)
             
-            Text("System Preferences > Security & Privacy > Privacy > Accessibility")
-                .padding(.bottom, 8)
-        
-            VStack(alignment: .leading, spacing: 16) {
-                Text("Select an option:")
-                    .font(.headline)
-                RadioButtonsView(options: options, selectedOption: $selectedOption)
-                
-                HStack(spacing: 8) {
-                    CheckBoxButton(title: "Shift", isSelected: $isShiftEnabled, isEnabled: selectedOption == "Custom")
-                    CheckBoxButton(title: "Control", isSelected: $isControlEnabled, isEnabled: selectedOption == "Custom")
-                    CheckBoxButton(title: "Option", isSelected: $isOptionEnabled, isEnabled: selectedOption == "Custom")
-                    CheckBoxButton(title: "Command", isSelected: $isCommandEnabled, isEnabled: selectedOption == "Custom")
-                    TextField("_", text: $customOption)
-                        .textFieldStyle(RoundedBorderTextFieldStyle())
-                        .frame(width: 30)
-                        .disabled(selectedOption != "Custom")
-                }
-                .padding(.leading, 20)
+            HStack(spacing: 8) {
+                CheckBoxButton(title: "Shift", isSelected: $isShiftEnabled, isEnabled: selectedOption == "Custom")
+                CheckBoxButton(title: "Control", isSelected: $isControlEnabled, isEnabled: selectedOption == "Custom")
+                CheckBoxButton(title: "Option", isSelected: $isOptionEnabled, isEnabled: selectedOption == "Custom")
+                CheckBoxButton(title: "Command", isSelected: $isCommandEnabled, isEnabled: selectedOption == "Custom")
+                TextField("_", text: $customOption)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                    .frame(width: 30)
+                    .disabled(selectedOption != "Custom")
             }
+            .padding(.leading, 20)
         }
         .padding(8)
+        .onChange(of: selectedOption) { _ in
+            updateCombinedCaptureKey()
+        }
+        .onChange(of: customOption) { _ in
+            updateCombinedCaptureKey()
+        }
+        .onAppear {
+            updateCombinedCaptureKey()
+        }
+    }
+    func updateCombinedCaptureKey() {
+        combinedCaptureKey = getCustomCaptureKey()
+    }
+    
+    func getCustomCaptureKey() -> String {
+        if selectedOption == "Custom" {
+                return customOption
+            } else if selectedOption == "Shift-Control-Command-0" {
+                return "1"
+            } else if selectedOption == "Control-Option-Command-0" {
+                return "0"
+            } else if selectedOption == "Control-Option-Command-O" {
+                return "o"
+            } else {
+                return "" // or any other default value you want to return
+            }
     }
 }
+
 
 
 struct CheckBoxButton: View {
@@ -140,11 +163,44 @@ struct RadioButton: View {
 //--------------- language settings ---------------//
  
 struct LanguageSettingsView: View {
+    @State private var languages = ["English", "German", "French"]
+    @State private var selectedLanguage: String?
+    
     var body: some View {
-        Text("Appearance Settings")
-            .font(.title)
+        VStack {
+            Text("Select languages or add your own language model:")
+                .padding(.leading)
+                .padding(.leading)
+            
+            Rectangle()
+                .foregroundColor(Color.white)
+                .frame(maxHeight: 200)
+                .padding()
+            
+            HStack(spacing: 0) {
+                Button(action: {
+                    // Add new language
+                    languages.append("New Language")
+                }) {
+                    Image(systemName: "plus")
+                }
+                
+                Button(action: {
+                    // Remove selected language
+                    if let selectedLanguage = languages.first {
+                        languages.removeAll(where: { $0 == selectedLanguage })
+                    }
+                }) {
+                    Image(systemName: "minus")
+                }
+            }
+            .padding(.leading) // Align buttons to the left
+        }
     }
 }
+
+
+
 
 struct PreferencesWindow_Previews: PreviewProvider {
     static var previews: some View {

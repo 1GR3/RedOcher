@@ -42,7 +42,6 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
     
     static var shared: AppDelegate!
     
-    let ocr = SLTesseract()
     
     final private class MacExtrasConfigurator: NSObject {
         
@@ -147,7 +146,18 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         @objc private func captureFromMenu() {
             // activate the functionality from the tessarect app
             print("captured from menu")
-            CaptureHelper.captureScreen()
+            //CaptureHelper.captureScreen()
+            //var image = NSImage()
+            if CaptureHelper.captureScreen() {
+                // Get the image from the pasteboard
+                let captureHelper = CaptureHelper()
+                let image = captureHelper.getImageFromPasteboard()
+                
+                // Recognize text from the image
+                let text = captureHelper.recognizeText(from: image)
+                print("Recognized Text:", text)
+                captureHelper.writeTextToClipboard(text)
+            }
         }
         //private var aboutWindow: NSWindow?
 
@@ -230,46 +240,54 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         // Handle the global shortcut event here
         // Perform any action or trigger any functionality when the shortcut is pressed
         print("captured with shortcut")
-        // Display a notification
-        CaptureHelper.captureScreen()
+        if CaptureHelper.captureScreen() {
+            // Get the image from the pasteboard
+            let captureHelper = CaptureHelper()
+            let image = captureHelper.getImageFromPasteboard()
+            
+            // Recognize text from the image
+            let text = captureHelper.recognizeText(from: image)
+            print("Recognized Text:", text)
+            captureHelper.writeTextToClipboard(text)
+        }
     }
     
     
 }
 
 final class CaptureHelper {
-    
-    struct CaptureWindow: View {
-        var body: some View {
-            VStack {
-                Text("Capture Window")
-                    .font(.title)
-                    .padding()
-                Button("Close") {
-                    NSApp.keyWindow?.close()
-                }
-                .padding()
-            }
+    private let ocr: SLTesseract
+        
+        init() {
+            ocr = SLTesseract()
+            ocr.language = "slv" // Optional: Set the language for OCR, e.g., English
+            //ocr.charWhitelist = "abcdefghijklmnopqrstuvwxyz" // Optional: Set a character whitelist for better recognition
+            //ocr.charBlacklist = "1234567890" // Optional: Set a character blacklist to exclude certain characters
         }
+    static func captureScreen() -> Bool {
+        let task = Process ()
+        task.launchPath = "/usr/sbin/screencapture"
+        task.arguments = ["-ci"]
+        task.launch()
+        task.waitUntilExit()
+        let status = task.terminationStatus
+        return status == 0
     }
-    
-    static func captureScreen() {
-        
-        // Add your capture screen functionality here
-        
-//        let ocr2text = ocr.recognize(image)
-//        print(ocr2text)
-        
-//        let captureWindow = NSWindow(
-//            contentRect: NSRect(x: 0, y: 0, width: 300, height: 200),
-//            styleMask: [.titled, .closable],
-//            backing: .buffered,
-//            defer: false
-//        )
-//        captureWindow.center()
-//        captureWindow.contentView = NSHostingView(rootView: CaptureWindow())
-//        captureWindow.makeKeyAndOrderFront(nil)
+    func getImageFromPasteboard() -> NSImage {
+        let pasteboard = NSPasteboard.general
+        guard pasteboard.canReadItem(withDataConformingToTypes:
+            NSImage.imageTypes) else { return NSImage() }
+        guard let image = NSImage(pasteboard: pasteboard) else { return
+            NSImage() }
+        return image
     }
-    
-    
+    func recognizeText(from image: NSImage) -> String {
+        let text = ocr.recognize(image)
+        return text ?? ""
+    }
+    func writeTextToClipboard(_ text: String) {
+        let pasteboard = NSPasteboard.general
+        pasteboard.clearContents()
+        pasteboard.setString(text, forType: .string)
+    }
 }

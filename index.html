@@ -1,109 +1,251 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
     <title>Red Ocher</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Suez+One&display=swap");
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        font-family: "Suez One", serif;
+        color: #6c757d;
+      }
+      header {
+        background-image: url("img/header-bg.jpg");
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center top;
+        padding: 5vh 0 15vh;
+      }
+    </style>
   </head>
   <body>
-    <h1>Red Ocher</h1>
-    <img
-      src="https://raw.githubusercontent.com/1GR3/RedOcher/main/Red%20Ocher/Assets.xcassets/AppIcon.appiconset/mac-256.png"
-      alt="Red Ocher logo"
-    />
-
-    <p>
-      Red Ocher is a macOS menu bar application (a.k.a. MenuBarExtra) that
-      allows users to capture a portion of the screen and perform optical
-      character recognition (OCR) on the captured image using the Tesseract OCR
-      library.
-    </p>
-
-    <h2>Features</h2>
-    <ul>
-      <li>Simple to use - stays out of the way.</li>
-      <li>Gets triggered on a custom shortcut.</li>
-      <li>Choose the specific language.</li>
-      <li>Define whitelist and blacklist for the characters.</li>
-    </ul>
-
-    <h2>Prerequisites</h2>
-    <p>
-      Before using this application, ensure that you have the following
-      dependencies installed:
-    </p>
-    <ul>
-      <li>Xcode</li>
-      <li>Tesseract OCR library</li>
-    </ul>
-
-    <h2>Installation</h2>
-    <ol>
-      <li>Clone the repository to your local machine.</li>
-      <li>Open the project in Xcode.</li>
-      <li>Build and run the project in Xcode to launch the application.</li>
-    </ol>
-
-    <h2>Usage</h2>
-    <ol>
-      <li>Launch the Red Ocher application.</li>
-      <li>
-        Select the desired portion of the screen by clicking and dragging the
-        mouse.
-      </li>
-      <li>The application will capture the selected portion of the screen.</li>
-      <li>The captured image will be processed using Tesseract OCR.</li>
-      <li>
-        The recognized text will be displayed within the application's
-        interface.
-      </li>
-      <li>
-        Optionally, you can copy the recognized text to the clipboard for
-        further use.
-      </li>
-    </ol>
-
-    <h2>Contributing</h2>
-    <p>
-      Contributions to Red Ocher are welcome! If you find any issues or have
-      suggestions for improvements, please feel free to submit a pull request or
-      open an issue in the project repository.
-    </p>
-    <p>When contributing, please follow these guidelines:</p>
-    <ul>
-      <li>
-        Fork the repository and create a new branch for your contribution.
-      </li>
-      <li>
-        Make your changes, ensuring that the code is well-documented and follows
-        the project's coding conventions.
-      </li>
-      <li>Write tests to cover any new functionality or changes.</li>
-      <li>
-        Open a pull request, providing a detailed description of your changes
-        and any relevant information.
-      </li>
-    </ul>
-
-    <h2>License</h2>
-    <p>
-      This project is licensed under the <a href="LICENSE">MIT License</a>. You
-      are free to modify and distribute the application in accordance with the
-      terms of the license.
-    </p>
-
-    <h2>Contact</h2>
-    <p>
-      If you have any questions, feedback, or suggestions, feel free to reach
-      out to the project maintainer:
-    </p>
-    <ul>
-      <li>Name: Ivo Gregurec</li>
-      <li>Email: ivo.gregurec@gmail.com</li>
-      <li>
-        Twitter:
-        <a href="https://twitter.com/igregurec"
-          >https://twitter.com/igregurec</a
+    <header class="container-fluid">
+      <img
+        src="img/mac-256.png"
+        alt="Red Ocher logo"
+        width="128"
+        class="mx-auto my-3 d-block"
+      />
+    </header>
+    <nav
+      class="navbar navbar-expand-md navbar-dark bg-dark"
+      aria-label="Fourth navbar example"
+    >
+      <div class="container-fluid">
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarsExample04"
+          aria-controls="navbarsExample04"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
         >
-      </li>
-    </ul>
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarsExample04">
+          <ul class="navbar-nav me-auto mb-2 mb-md-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Link</a>
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link disabled"
+                href="#"
+                tabindex="-1"
+                aria-disabled="true"
+                >Disabled</a
+              >
+            </li>
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                id="dropdown04"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+                >Dropdown</a
+              >
+              <ul class="dropdown-menu" aria-labelledby="dropdown04">
+                <li><a class="dropdown-item" href="#">Action</a></li>
+                <li><a class="dropdown-item" href="#">Another action</a></li>
+                <li>
+                  <a class="dropdown-item" href="#">Something else here</a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+          <form>
+            <input
+              class="form-control"
+              type="text"
+              placeholder="Search"
+              aria-label="Search"
+            />
+          </form>
+        </div>
+      </div>
+    </nav>
+    <div class="container">
+      <div class="row">
+        <div class="col-8">
+          <h1>
+            <span class="visually-hidden">Red Ocher</span>
+            <img
+              class="pt-5 pb-3"
+              src="img/RedOcher-logo.png"
+              width="400"
+              alt="Red Ocher logo"
+            />
+          </h1>
+          <p>
+            Named after one of the oldest pigments known to mankind, Red Ocher
+            is a MacOS menu bar application (a.k.a. MenuBarExtra) that allows
+            users to easily capture a portion of the screen, perform optical
+            character recognition (OCR) on it using the
+            <a href="https://github.com/tesseract-ocr/tesseract"
+              >Tesseract OCR library</a
+            >
+            and return the text in the clipboard.
+          </p>
+        </div>
+        <div class="col-4">
+          <img
+            class="w-100"
+            src="img/dry-pigment.jpg"
+            alt="dry red ocher pigment "
+          />
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <h2>Features</h2>
+          <ul>
+            <li>Simple to use - stays out of the way.</li>
+            <li>Gets triggered on a custom shortcut.</li>
+            <li>Choose the specific language.</li>
+            <li>Define whitelist and blacklist for the characters.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <h2>Download</h2>
+          <p>Is not available yet</p>
+          <p>
+            Instead, build it yourself from
+            <a href="https://github.com/1GR3/RedOcher">the repository</a>
+          </p>
+        </div>
+        <div class="col">
+          <h2>Install</h2>
+          <ol>
+            <li>
+              Clone
+              <a href="https://github.com/1GR3/RedOcher">the repository</a> to
+              your local machine.
+            </li>
+            <li>Open the project in Xcode.</li>
+            <li>
+              Build and run the project in Xcode to launch the application.
+            </li>
+          </ol>
+        </div>
+      </div>
+      <div class="row pt-3">
+        <div class="col">
+          <h2>Donate</h2>
+          <p>
+            Red Ocher is a side-project and it takes a time and effort to
+            develop it. Please, consider making a donation.
+          </p>
+        </div>
+        <div class="col">
+          <iframe
+            id="kofiframe"
+            src="https://ko-fi.com/igregurec/?hidefeed=true&widget=true&embed=true&preview=true"
+            style="border: none; width: 100%; padding: 4px"
+            height="550"
+            title="igregurec"
+          ></iframe>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <h2>Contributing</h2>
+          <p>
+            Contributions to Red Ocher are welcome! If you find any issues or
+            have suggestions for improvements, please feel free to submit a pull
+            request or open an issue in the project repository.
+          </p>
+          <p>When contributing, please follow these guidelines:</p>
+          <ul>
+            <li>
+              Fork the repository and create a new branch for your contribution.
+            </li>
+            <li>
+              Make your changes, ensuring that the code is well-documented and
+              follows the project's coding conventions.
+            </li>
+            <li>Write tests to cover any new functionality or changes.</li>
+            <li>
+              Open a pull request, providing a detailed description of your
+              changes and any relevant information.
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <h2>License</h2>
+          <p>
+            This project is licensed under the
+            <a href="LICENSE">MIT License</a>. You are free to modify and
+            distribute the application in accordance with the terms of the
+            license.
+          </p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <h2>Contact</h2>
+          <p>
+            If you have any questions, feedback, or suggestions, feel free to
+            reach out to the project maintainer:
+          </p>
+          <ul>
+            <li>Name: Ivo Gregurec</li>
+            <li>Email: ivo.gregurec@gmail.com</li>
+            <li>
+              Twitter:
+              <a href="https://twitter.com/igregurec"
+                >https://twitter.com/igregurec</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
   </body>
 </html>

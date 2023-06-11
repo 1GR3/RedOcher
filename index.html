@@ -46,7 +46,9 @@
     <style>
       @import url("https://fonts.googleapis.com/css2?family=Suez+One&display=swap");
       body {
-        //font-family: sans-serif;
+      }
+      a {
+        color: #b75a49;
       }
       h1,
       h2,
@@ -75,9 +77,49 @@
         color: white !important;
         text-shadow: 0 3px 6px rgba(0, 0, 0, 0.25);
       }
+      .btn-light:hover {
+        color: #b75a49 !important;
+        border-color: #b75a49 !important;
+        transition: all 0.25s;
+      }
+      .bg-noise {
+        background-image: url("img/noise_lines.png");
+      }
+      .grab {
+        background: rgba(127, 127, 127, 0.25);
+        border: 1px solid white;
+        position: relative;
+      }
+      .grab:after {
+        content: url(img/Select.svg);
+        position: absolute;
+        right: -16px;
+        bottom: -22px;
+      }
+      .paste-icon {
+        font-size: 10rem;
+        text-align: center;
+        position: relative;
+        color: #6c757d;
+      }
+      .paste-icon::before {
+        color: #b75a49;
+        position: absolute;
+
+        content: "\F135";
+        font-family: "bootstrap-icons";
+        left: -88px;
+      }
       .social-icons .btn-primary {
         background-color: #b75a49;
         border-color: #b75a49;
+      }
+      @media only screen and (max-width: 767px) {
+        .paste-icon::before {
+          content: "\F124";
+          left: unset;
+          top: -100px;
+        }
       }
     </style>
   </head>
@@ -91,12 +133,17 @@
       />
       <h1>Red Ocher</h1>
       <h6>Simple & Powerful <strong>OCR</strong> app for macOS</h6>
+      <button
+        class="btn btn-light btn-lg text-uppercase text-center mx-auto mt-4 d-block"
+      >
+        Download
+      </button>
     </header>
     <nav
       class="navbar navbar-expand-md navbar-dark bg-dark"
       aria-label="Fourth navbar example"
     >
-      <div class="container-fluid">
+      <div class="container">
         <button
           class="navbar-toggler"
           type="button"
@@ -108,7 +155,12 @@
         >
           <span class="navbar-toggler-icon"></span>
         </button>
-
+        <a
+          href="/"
+          class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none"
+        >
+          <img src="img/menuBarIcon-W@2x.png" />
+        </a>
         <div class="collapse navbar-collapse" id="navbarsExample04">
           <ul class="navbar-nav me-auto mb-2 mb-md-0">
             <li class="nav-item">
@@ -116,15 +168,6 @@
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">Link</a>
-            </li>
-            <li class="nav-item">
-              <a
-                class="nav-link disabled"
-                href="#"
-                tabindex="-1"
-                aria-disabled="true"
-                >Disabled</a
-              >
             </li>
             <li class="nav-item dropdown">
               <a
@@ -144,21 +187,15 @@
               </ul>
             </li>
           </ul>
-          <form>
-            <input
-              class="form-control"
-              type="text"
-              placeholder="Search"
-              aria-label="Search"
-            />
-          </form>
         </div>
       </div>
     </nav>
-    <div class="container">
-      <div class="row pt-3">
-        <div class="col-12 col-md-6 col-lg-8 pt-3">
-          <!-- <h2>
+
+    <div class="container-fluid bg-noise mb-4">
+      <div class="container">
+        <div class="row py-5">
+          <div class="col-12 col-md-6 col-lg-8 pt-3 grab">
+            <!-- <h2>
             <span class="visually-hidden">Red Ocher</span>
             <img
               class="pt-5 pb-3"
@@ -167,30 +204,34 @@
               alt="Red Ocher logo"
             />
           </h2> -->
-          <p>
-            Named after one of the oldest pigments known to mankind, Red Ocher
-            is a macOS menu bar application (a.k.a. MenuBarExtra) that allows
-            users to easily capture a portion of the screen, perform optical
-            character recognition (<strong>OCR</strong>) on it using the
-            <a href="https://github.com/tesseract-ocr/tesseract"
-              >Tesseract OCR library</a
-            >
-            and return the text in the clipboard.
-          </p>
-          <p>
-            Weather you need to digitize an old document, copy the "protected"
-            text from a web or qiuckly grab words out of a photo, Red Ocher is a
-            simple and powerful solution.
-          </p>
-        </div>
-        <div class="col-12 col-md-6 col-lg-4">
-          <img
-            class="w-100"
-            src="img/dry-pigment.jpg"
-            alt="dry red ocher pigment "
-          />
+            <p class="lead">
+              Named after one of the oldest pigments known to mankind, Red Ocher
+              is a macOS menu bar application (a.k.a. <i>MenuBarExtra</i>) that
+              allows users to easily capture a portion of the screen, perform
+              optical character recognition (<strong>OCR</strong>) on it using
+              the
+              <a href="https://github.com/tesseract-ocr/tesseract"
+                >Tesseract OCR library</a
+              >
+              and return the text in the clipboard.
+            </p>
+            <p class="lead">
+              Weather you need to digitize an old document, copy the "protected"
+              text from a web or qiuckly grab words out of a photo, Red Ocher is
+              a simple and powerful solution.
+            </p>
+          </div>
+          <div
+            class="col-12 col-md-6 col-lg-4 d-flex align-items-center justify-content-center"
+          >
+            <div class="paste-icon">
+              <i class="bi bi-clipboard"></i>
+            </div>
+          </div>
         </div>
       </div>
+    </div>
+    <div class="container">
       <h2>Usage</h2>
       <div class="row pb-3">
         <div class="col-12 col-lg-4">
@@ -344,6 +385,13 @@
               >
             </li>
           </ul>
+        </div>
+        <div class="col">
+          <img
+            class="w-100"
+            src="img/dry-pigment.jpg"
+            alt="dry red ocher pigment "
+          />
         </div>
       </div>
     </div>

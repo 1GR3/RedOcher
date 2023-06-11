@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="32px" height="32px" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Cursor/Screenshot/Select</title>
+    <g id="Cursor/Screenshot/Select" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="scrsel" transform="translate(4, 4)">
+            <path d="M12,12 L12,23 L11,23 L11,12 L12,12 Z M11,11 L11,12 L0,12 L0,11 L11,11 Z M23,11 L23,12 L12,12 L12,11 L23,11 Z M12,0 L12,11 L11,11 L11,0 L12,0 Z" id="Combined-Shape-Copy" fill="#231F20" fill-rule="nonzero" opacity="0.719999969"></path>
+            <path d="M17,11.5 C17,14.5375661 14.5375661,17 11.5,17 C8.46243388,17 6,14.5375661 6,11.5 C6,8.46243388 8.46243388,6 11.5,6 C14.5375661,6 17,8.46243388 17,11.5" id="Shape" fill="#231F20" fill-rule="nonzero" opacity="0.149999991"></path>
+            <circle id="Oval" stroke="#231F20" opacity="0.300000012" cx="11.5" cy="11.5" r="5.5"></circle>
+        </g>
+    </g>
+</svg>

@@ -37,24 +37,47 @@
       integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
       crossorigin="anonymous"
     />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.6.1/font/bootstrap-icons.css"
+    />
+
     <title>Red Ocher</title>
     <style>
       @import url("https://fonts.googleapis.com/css2?family=Suez+One&display=swap");
+      body {
+        //font-family: sans-serif;
+      }
       h1,
       h2,
       h3,
       h4,
-      h5,
-      h6 {
+      h5 {
         font-family: "Suez One", serif;
         color: #6c757d;
+      }
+      h1 {
+        font-size: 64px;
+      }
+      h6 {
+        font-size: 24px;
       }
       header {
         background-image: url("img/header-bg.jpg");
         background-repeat: no-repeat;
         background-size: cover;
-        background-position: center top;
-        padding: 5vh 0 15vh;
+        background-position: center center;
+        padding: 5vh 0 5vh;
+      }
+      header h1,
+      header h6 {
+        text-align: center;
+        color: white !important;
+        text-shadow: 0 3px 6px rgba(0, 0, 0, 0.25);
+      }
+      .social-icons .btn-primary {
+        background-color: #b75a49;
+        border-color: #b75a49;
       }
     </style>
   </head>
@@ -66,6 +89,8 @@
         width="128"
         class="mx-auto my-3 d-block"
       />
+      <h1>Red Ocher</h1>
+      <h6>Simple & Powerful <strong>OCR</strong> app for macOS</h6>
     </header>
     <nav
       class="navbar navbar-expand-md navbar-dark bg-dark"
@@ -131,9 +156,9 @@
       </div>
     </nav>
     <div class="container">
-      <div class="row">
-        <div class="col-8">
-          <h1>
+      <div class="row pt-3">
+        <div class="col-12 col-md-6 col-lg-8 pt-3">
+          <!-- <h2>
             <span class="visually-hidden">Red Ocher</span>
             <img
               class="pt-5 pb-3"
@@ -141,7 +166,7 @@
               width="400"
               alt="Red Ocher logo"
             />
-          </h1>
+          </h2> -->
           <p>
             Named after one of the oldest pigments known to mankind, Red Ocher
             is a macOS menu bar application (a.k.a. MenuBarExtra) that allows
@@ -152,12 +177,44 @@
             >
             and return the text in the clipboard.
           </p>
+          <p>
+            Weather you need to digitize an old document, copy the "protected"
+            text from a web or qiuckly grab words out of a photo, Red Ocher is a
+            simple and powerful solution.
+          </p>
         </div>
-        <div class="col-4">
+        <div class="col-12 col-md-6 col-lg-4">
           <img
             class="w-100"
             src="img/dry-pigment.jpg"
             alt="dry red ocher pigment "
+          />
+        </div>
+      </div>
+      <h2>Usage</h2>
+      <div class="row pb-3">
+        <div class="col-12 col-lg-4">
+          Sits in the menu bar, day and night...
+          <img
+            class="w-100 py-2"
+            src="img/menubar.png"
+            alt="Red Ocher - positioned in menubar"
+          />
+        </div>
+        <div class="col-12 col-lg-4">
+          ...waiting for you to trigger it...
+          <img
+            class="w-100 py-2"
+            src="img/screenshot.jpg"
+            alt="Red Ocher - positioned in menubar"
+          />
+        </div>
+        <div class="col-12 col-lg-4">
+          ...and paste the text.
+          <img
+            class="w-100 py-2"
+            src="img/text.jpg"
+            alt="Red Ocher - positioned in menubar"
           />
         </div>
       </div>
@@ -197,14 +254,32 @@
         </div>
       </div>
       <div class="row pt-3">
-        <div class="col">
-          <h2>Donate</h2>
+        <div class="col-12 col-md-6">
+          <h2>Share and Support</h2>
           <p>
             Red Ocher is a side-project and it takes a time and effort to
-            develop it. Please, consider making a donation.
+            develop it. Please, consider supporting by sharing it on social
+            media or making a donation.
           </p>
+          <div class="social-icons pb-5 text-center">
+            <a
+              href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2F1gr3.github.io%2FRedOcher%2F"
+              class="btn btn-primary btn-lg"
+              ><i class="bi bi-facebook"></i
+            ></a>
+            <a
+              href="https://twitter.com/intent/tweet?url=https%3A%2F%2F1gr3.github.io%2FRedOcher%2F&text=Check%20out%20this%20awesome%20website"
+              class="btn btn-primary btn-lg"
+              ><i class="bi bi-twitter"></i
+            ></a>
+            <a
+              href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2F1gr3.github.io%2FRedOcher%2F"
+              class="btn btn-primary btn-lg"
+              ><i class="bi bi-linkedin"></i
+            ></a>
+          </div>
         </div>
-        <div class="col">
+        <div class="col-12 col-md-6">
           <iframe
             id="kofiframe"
             src="https://ko-fi.com/igregurec/?hidefeed=true&widget=true&embed=true&preview=true"

@@ -96,19 +96,38 @@
         right: -16px;
         bottom: -22px;
       }
-      .paste-icon {
+      .big-icon {
         font-size: 10rem;
         text-align: center;
         position: relative;
         color: #6c757d;
       }
-      .paste-icon::before {
+      .big-icon::before {
         color: #b75a49;
         position: absolute;
-
-        content: "\F135";
         font-family: "bootstrap-icons";
+      }
+      .paste-icon::before {
+        content: "\F135";
         left: -88px;
+      }
+      .shortcut-icon::before {
+        content: "\F478";
+        top: 36px;
+        left: 170px;
+        font-size: 9rem;
+      }
+      .language-icon::before {
+        content: "\F473";
+        top: 36px;
+        left: 170px;
+        font-size: 9rem;
+      }
+      .list-icon::before {
+        content: "\F5F7";
+        top: 36px;
+        left: 170px;
+        font-size: 9rem;
       }
       .social-icons .btn-primary {
         background-color: #b75a49;
@@ -224,10 +243,47 @@
           <div
             class="col-12 col-md-6 col-lg-4 d-flex align-items-center justify-content-center"
           >
-            <div class="paste-icon">
+            <div class="paste-icon big-icon">
               <i class="bi bi-clipboard"></i>
             </div>
           </div>
+        </div>
+      </div>
+    </div>
+    <div class="container py-3">
+      <h2>Features</h2>
+      <div class="row text-center">
+        <div class="col">
+          <div class="big-icon shortcut-icon">
+            <i class="bi bi-keyboard"></i>
+          </div>
+          <h4>Custom Shortcut</h4>
+          <p>
+            Choose 1 of 3 convenient presets or create a custom keyboard
+            shortcut
+          </p>
+        </div>
+        <div class="col">
+          <div class="big-icon language-icon">
+            <i class="bi bi-globe"></i>
+          </div>
+          <h4>Select language(s)</h4>
+          <p>
+            Choose one or more specific language from over
+            <a href="https://github.com/tesseract-ocr/tessdata"
+              >120 different language and script models</a
+            >.
+          </p>
+        </div>
+        <div class="col">
+          <div class="big-icon list-icon">
+            <i class="bi bi-card-checklist"></i>
+          </div>
+          <h4>Create lists</h4>
+          <p>
+            Specify the correct characters by creating a whitelist or/and a
+            blacklist
+          </p>
         </div>
       </div>
     </div>
@@ -259,17 +315,7 @@
           />
         </div>
       </div>
-      <div class="row">
-        <div class="col">
-          <h2>Features</h2>
-          <ul>
-            <li>Simple to use - stays out of the way.</li>
-            <li>Gets triggered on a custom shortcut.</li>
-            <li>Choose the specific language.</li>
-            <li>Define whitelist and blacklist for the characters.</li>
-          </ul>
-        </div>
-      </div>
+
       <div class="row">
         <div class="col">
           <h2>Download</h2>

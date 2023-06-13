@@ -136,6 +136,9 @@
       .list-icon i::before {
         vertical-align: 0;
       }
+      .bg-red-ocher {
+        background-color: #b75a49;
+      }
       .social-icons .btn-primary {
         background-color: #b75a49;
         border-color: #b75a49;
@@ -161,21 +164,23 @@
       <h6>Simple & Powerful <strong>OCR</strong> app for macOS</h6>
       <button
         class="btn btn-light btn-lg text-uppercase text-center mx-auto mt-4 d-block"
+        data-bs-toggle="modal"
+        data-bs-target="#downloadModal"
       >
         Download
       </button>
     </header>
     <nav
       class="navbar navbar-expand-md navbar-dark bg-dark"
-      aria-label="Fourth navbar example"
+      aria-label="Main navigation"
     >
       <div class="container">
         <button
           class="navbar-toggler"
           type="button"
           data-bs-toggle="collapse"
-          data-bs-target="#navbarsExample04"
-          aria-controls="navbarsExample04"
+          data-bs-target="#navbar"
+          aria-controls="navbar"
           aria-expanded="false"
           aria-label="Toggle navigation"
         >
@@ -187,7 +192,7 @@
         >
           <img src="img/menuBarIcon-W@2x.png" />
         </a>
-        <div class="collapse navbar-collapse" id="navbarsExample04">
+        <div class="collapse navbar-collapse" id="navbar">
           <ul class="navbar-nav me-auto mb-2 mb-md-0">
             <li class="nav-item">
               <a class="nav-link active" aria-current="page" href="#">Home</a>
@@ -234,13 +239,13 @@
               Named after one of the oldest pigments known to mankind, Red Ocher
               <strong>/ɹɛd ˈoʊkər/</strong>
               is a <strong>macOS</strong> menu bar application (a.k.a.
-              <em>MenuBarExtra</em>) that allows users to easily capture a
-              portion of the screen, perform optical character recognition
-              (<strong>OCR</strong>) on it using the
+              <em>MenuBarExtra</em>) that allows users to easily
+              <u>capture a portion of the screen</u>, perform optical character
+              recognition (<strong>OCR</strong>) on it using the
               <a href="https://github.com/tesseract-ocr/tesseract"
                 >Tesseract OCR library</a
               >
-              and return the text into the clipboard.
+              and return the <u>text into the clipboard</u>.
             </p>
             <p class="lead">
               Weather you need to digitize an old document, copy a "protected"
@@ -258,8 +263,38 @@
         </div>
       </div>
     </div>
-    <div class="container py-3 text-center">
-      <h2>Features</h2>
+    <div class="container text-center py-5">
+      <h2>Simple to Use</h2>
+      <div class="row pb-3">
+        <div class="col-12 col-lg-4">
+          <img
+            class="w-100 py-2"
+            src="img/menubar.png"
+            alt="Red Ocher - positioned in menubar"
+          />
+          Sits in the menu bar, day and night...
+        </div>
+        <div class="col-12 col-lg-4">
+          <img
+            class="w-100 py-2"
+            src="img/screenshot.jpg"
+            alt="Red Ocher - positioned in menubar"
+          />
+          ...waiting to be triggered...
+        </div>
+        <div class="col-12 col-lg-4">
+          <img
+            class="w-100 py-2"
+            src="img/text.jpg"
+            alt="Red Ocher - positioned in menubar"
+          />
+          ...and paste the text.
+        </div>
+      </div>
+    </div>
+    <div class="container-fluid bg-red-ocher py-1"></div>
+    <div class="container py-5 text-center">
+      <h2>Powerful Features</h2>
       <div class="row">
         <div class="col-12 col-lg-4 pb-3">
           <div class="big-icon shortcut-icon">
@@ -296,60 +331,53 @@
         </div>
       </div>
     </div>
-    <div class="container">
-      <h2>Usage</h2>
-      <div class="row pb-3">
-        <div class="col-12 col-lg-4">
-          Sits in the menu bar, day and night...
-          <img
-            class="w-100 py-2"
-            src="img/menubar.png"
-            alt="Red Ocher - positioned in menubar"
-          />
-        </div>
-        <div class="col-12 col-lg-4">
-          ...waiting for you to trigger it...
-          <img
-            class="w-100 py-2"
-            src="img/screenshot.jpg"
-            alt="Red Ocher - positioned in menubar"
-          />
-        </div>
-        <div class="col-12 col-lg-4">
-          ...and paste the text.
-          <img
-            class="w-100 py-2"
-            src="img/text.jpg"
-            alt="Red Ocher - positioned in menubar"
-          />
+    <div class="container-fluid bg-red-ocher">
+      <div class="container text-white">
+        <div class="row py-5">
+          <div class="col-auto">
+            <p class="lead text-center px-5">
+              To properly function,<br />
+              Red Ocher requires<br />
+              <strong>specific system settings</strong>.
+            </p>
+            <button
+              class="btn btn-light btn-lg text-uppercase text-center mx-auto mt-4 d-block"
+              data-bs-toggle="modal"
+              data-bs-target="#downloadModal"
+            >
+              Download
+            </button>
+          </div>
+          <div class="col">
+            <p class="">
+              To load Red Ocher on login (optional):<br />
+              <strong>
+                System Preferences &gt; Users &amp; Groups &gt; [your username]
+                &gt; Login Items &gt; add Red Ocher
+              </strong>
+            </p>
+            <p class="">
+              To set a global keyboard shortcut:<br />
+              <strong>
+                System Preferences &gt; Security &amp; Privacy Privacy &gt;
+                Accessibility &gt; add Red Ocher</strong
+              >
+            </p>
+            <p class="">
+              To take a screenshot:<br />
+              <strong>
+                System Preferences &gt; Security &amp; Privacy Privacy &gt;
+                Screen Recording &gt; add Red Ocher</strong
+              >
+            </p>
+          </div>
         </div>
       </div>
+    </div>
 
+    <div class="container py-5">
       <div class="row">
-        <div class="col">
-          <h2>Download</h2>
-          <p>Is not available yet</p>
-          <p>
-            Instead, build it yourself from
-            <a href="https://github.com/1GR3/RedOcher">the repository</a>
-          </p>
-        </div>
-        <div class="col">
-          <h2>Install</h2>
-          <ol>
-            <li>
-              Clone
-              <a href="https://github.com/1GR3/RedOcher">the repository</a> to
-              your local machine.
-            </li>
-            <li>Open the project in Xcode.</li>
-            <li>
-              Build and run the project in Xcode to launch the application.
-            </li>
-          </ol>
-        </div>
-      </div>
-      <div class="row pt-3">
+        <!-- share and support -->
         <div class="col-12 col-md-6 col-lg">
           <h2>Share and Support</h2>
           <p class="lead">
@@ -394,17 +422,6 @@
 
       <div class="row">
         <div class="col">
-          <h2>License</h2>
-          <p class="lead">
-            This project is licensed under the
-            <a href="LICENSE">MIT License</a>. You are free to modify and
-            distribute the application in accordance with the terms of the
-            license.
-          </p>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col">
           <h2>Contact</h2>
           <p>
             If you have any questions, feedback, or suggestions, feel free to
@@ -431,6 +448,53 @@
       </div>
     </div>
 
+    <!-- Modal -->
+    <div
+      class="modal fade"
+      id="downloadModal"
+      tabindex="-1"
+      aria-labelledby="downloadModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="downloadModalLabel">Download</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <p class="lead">
+              Download is not available yet. To install the app:
+            </p>
+            <ol>
+              <li>
+                Clone
+                <a href="https://github.com/1GR3/RedOcher -">the repository</a>
+                to your local machine.
+              </li>
+              <li>Open the project in Xcode.</li>
+              <li>
+                Build and run the project in Xcode to launch the application.
+              </li>
+            </ol>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"

@@ -218,7 +218,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
     private func registerGlobalShortcut() {
         print("registerGlobalShortcut")
         let keyMask: NSEvent.ModifierFlags = [.command, .control, .option]
-        let keyCode: UInt16 = 7 // Example keycode for "X" key
+        let keyCode: UInt16 = 29 // Example keycode for "X" key
         
         eventMonitor = NSEvent.addGlobalMonitorForEvents(matching: .keyDown) { (event) in
             if event.modifierFlags.contains(keyMask) && (event.keyCode == keyCode) {
